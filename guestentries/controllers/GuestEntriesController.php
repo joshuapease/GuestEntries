@@ -163,6 +163,12 @@ class GuestEntriesController extends BaseController
 
 		$entry->sectionId     = craft()->request->getRequiredPost('sectionId');
 
+		$entryId = craft()->request->getPost('entryId');
+		if ($entryId)
+		{
+			$entry->id = $entryId;
+		}
+
 		$this->_section = craft()->sections->getSectionById($entry->sectionId);
 
 		if (!$this->_section)
